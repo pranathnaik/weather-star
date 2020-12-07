@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <input type="text" placeholder="Search" />
+      </div>
+      <div class="main-content">
+        <i class="fas fa-cloud"></i>
+        <div class="place">London</div>
+        <div class="temperature">23 * C</div>
+        <div class="day">Sunday</div>
+        <div class="month">December 12</div>
+        <div class="year">2020</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let curdate = document.getElementById("date");
+    let date = new Date();
+    const getCurrentDay = () => {
+      let weekday = Array(6);
+      weekday[0] = "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
+
+      return `${weekday[date.getDay()]}`;
+    };
+
+    getCurrentDay();
+    const getCurrentTime = () => {
+      let monthName = [
+        "Jan",
+        "Feb",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUNE",
+        "JULY",
+        "AUG",
+        "SEPT",
+        "OCT",
+        "NOV",
+        "DEC",
+      ];
+
+      var month = monthName[date.getMonth()];
+      var dat = date.getDate();
+      var year = date.getFullYear();
+
+      let hours = date.getHours();
+      let mins = date.getMinutes();
+
+      let perios = "AM";
+      if (hours > 11) {
+        perios = "PM";
+        if (hours > 12) hours -= 12;
+        if (hours < 10) hours = "0" + hours;
+      }
+
+      if (mins < 10) {
+        mins = "0" + mins;
+      }
+
+      return month + " / " + dat + " / " + year;
+    };
+    curdate.innerHTML = getCurrentDay() + getCurrentTime();
+  </script>
+</html>
